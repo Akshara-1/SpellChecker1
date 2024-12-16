@@ -1,0 +1,43 @@
+from spellchecker import SpellChecker
+
+spell = SpellChecker()
+
+def corrected_text(text):
+        words=text.split()
+        corrected_words=[]
+
+        for word in words:
+            corrected=spell.correction(word)
+            if corrected !=word.lower():
+                print(f'Correcting "{word}" to "{corrected}"')
+                corrected_words.append(corrected)
+
+            else:
+                  corrected_words.append(word)
+
+                #print(corrected_words)
+        return ' '.join(corrected_words)
+        
+
+def candidates_words():
+    print('\nSome of the alternates words which you might be looking for:\n')
+    words=text.split()
+    for word in words:
+            corrected=spell.correction(word)
+            print(spell.candidates(word))
+
+        
+print('\n***** SPELL CHECKER *****\n')
+while True:
+    text=input('Enter your text(Type "exit" to quit):')
+    t=corrected_text(text)
+    print('The corrected text is:',t)
+
+    if text.lower()=='exit':
+                print('\nThank you for using SpellChecker.....\n')
+                break
+    
+    e=input('Was the the text you were looking for(y/n):')
+
+    if e=='n':
+         candidates_words()
